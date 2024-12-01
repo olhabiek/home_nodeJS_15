@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.io</title>
+    <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <textarea id="input" type="text" rows="8" cols="30"></textarea>
+    <button id="button">Send message</button>
+    <ul id="messageList">
+      <li>First message</li>
+    </ul>
+    <script>
+      const webSocket = io("http://localhost:3000");
+
+      const input = document.getElementById("input");
+      const button = document.getElementById("button");
+      const messageList = document.getElementById("messageList");
+
+      webSocket.on("message", (msg) => {
+        const liMessage = document.createElement("li");
+        liMessage.textContent = msg;
+        messageList.appendChild(liMessage);
+      });
+
+      button.addEventListener("click", () => {
+        const value = input.value;
+        webSocket.emit("message", value);
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>

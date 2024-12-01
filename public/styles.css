@@ -1,0 +1,33 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(110, 110, 110);
+  gap: 16px;
+  margin: 30px auto;
+  font-family: monospace;
+}
+
+#input {
+  width: 300px;
+  align-self: center;
+  resize: none;
+  color: rgb(0, 79, 119);
+  font-weight: bold;
+  padding: 8px;
+}
+
+#button {
+  width: 200px;
+  padding: 20px 30px;
+  align-self: center;
+  font-weight: bolder;
+}
+
+#messageList {
+  align-self: center;
+}
+
+li {
+  margin-bottom: 8px;
+}
